@@ -40,7 +40,7 @@ services:
       - database_shared:/shared
 
   ssh:
-    # We use an SSH image so we can securely tunnel into the Docker network with 
+    # We use an SSH image so we can securely tunnel into the Docker network with
     # tools like Sequel Pro, TablePlus, Sequel Ace, etc.
     # Learn more how to secure your tunnel here: https://github.com/serversideup/docker-ssh
     image: serversideup/docker-ssh
@@ -49,7 +49,7 @@ services:
         published: 2222
         mode: host
     environment:
-      # Change the keys below to your own keys 
+      # Change the keys below to your own keys
       AUTHORIZED_KEYS: >
         "# Start Keys
          ssh-ed25519 1234567890abcdefghijklmnoqrstuvwxyz user-a
@@ -88,7 +88,7 @@ services:
         - "traefik.http.services.my-php-app.loadbalancer.server.port=8080"
         - "traefik.http.services.my-php-app.loadbalancer.server.scheme=http"
         # Health check
-        - "traefik.http.services.my-php-app.loadbalancer.healthcheck.path=/ping"
+        - "traefik.http.services.my-php-app.loadbalancer.healthcheck.path=/healthcheck"
         - "traefik.http.services.my-php-app.loadbalancer.healthcheck.interval=100ms"
         - "traefik.http.services.my-php-app.loadbalancer.healthcheck.timeout=75ms"
         - "traefik.http.services.my-php-app.loadbalancer.healthcheck.scheme=http"
